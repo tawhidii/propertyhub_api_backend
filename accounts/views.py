@@ -15,7 +15,7 @@ class SignUpView(APIView):
         name = data['name']
         email = data['email']
         password = data['password']
-        password2 = data['password']
+        password2 = data['password2']
 
         if password == password2:
             if User.objects.filter(email=email).exists():
