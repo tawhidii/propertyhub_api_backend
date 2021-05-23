@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'agents.apps.AgentsConfig',
+    'listings.apps.ListingsConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',
