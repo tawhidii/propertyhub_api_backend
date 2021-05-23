@@ -116,6 +116,7 @@ class SearchView(APIView):
             days_passed = 20
         elif days_passed == 'Any':
             days_passed = 0
+
         for query in queryset:
             num_days = (datetime.now(timezone.utc) - query.list_date).days
 
@@ -133,6 +134,8 @@ class SearchView(APIView):
             has_photos = 5
         elif has_photos == '10+':
             has_photos = 10
+        elif has_photos == '15+':
+            has_photos = 15
 
         for query in queryset:
             count = 0
@@ -156,16 +159,37 @@ class SearchView(APIView):
                 count += 1
             if query.photo_10:
                 count += 1
+            if query.photo_11:
+                count += 1
+            if query.photo_12:
+                count += 1
+            if query.photo_13:
+                count += 1
+            if query.photo_14:
+                count += 1
+            if query.photo_15:
+                count += 1
+            if query.photo_16:
+                count += 1
+            if query.photo_17:
+                count += 1
+            if query.photo_18:
+                count += 1
+            if query.photo_19:
+                count += 1
+            if query.photo_20:
+                count += 1
 
             if count < has_photos:
                 slug = query.slug
                 queryset = queryset.exclude(slug__iexact=slug)
-            open_house = data['open_house']
-            queryset = queryset.filter(open_house__iexact=open_house)
 
-            keywords = data['keywords']
-            queryset = queryset.filter(description__icontains=keywords)
+        open_house = data['open_house']
+        queryset = queryset.filter(open_house__iexact=open_house)
 
-            serializer = ListingSerializer(queryset,many=True)
+        keywords = data['keywords']
+        queryset = queryset.filter(description__icontains=keywords)
 
-            return Response(serializer.data)
+        serializer = ListingSerializer(queryset, many=True)
+
+        return Response(serializer.data)
