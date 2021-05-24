@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'agents.apps.AgentsConfig',
     'listings.apps.ListingsConfig',
+    'contacts.apps.ContactsConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -93,6 +94,16 @@ DATABASES = {
         'PORT': '5432',  # default port for Postgresql
     }
 }
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'tawhidi.pro@gmail.com'
+EMAIL_HOST_PASSWORD ='hfukhknsopjwlpmt'
+EMAIL_USE_TLS = True
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
